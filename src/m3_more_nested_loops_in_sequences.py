@@ -4,8 +4,8 @@ in the context of SEQUENCES OF SUB-SEQUENCES.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Jacob Jarski.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 
 def main():
@@ -44,10 +44,28 @@ def run_test_largest_number():
     answer = largest_number(([], [], []))
     print('Expected and actual are:', expected, answer)
 
-    # TODO 2 (continued): Add your ADDITIONAL test(s) here:
+    # Test 4:
+    expected = 3
+    answer = largest_number([(0, 3), (3, 2), (1, 2, 1, 0)])
+    print('Expected and actual are:', expected, answer)
+
+    # DONE 2 (continued): Add your ADDITIONAL test(s) here:
 
 
 def largest_number(seq_seq):
+    greatest = 0
+    for k in range(len(seq_seq)):
+        for j in range(len(seq_seq[k])):
+            if seq_seq[k][j] < 0:
+                if (seq_seq[k][j] * -1) > greatest:
+                    greatest = seq_seq[k][j]
+            else:
+                if(seq_seq[k][j]) > greatest:
+                    greatest = seq_seq[k][j]
+    if greatest == 0:
+        return None
+    else:
+        return greatest
     """
     Returns the largest number in the subsequences of the given
     sequence of sequences.  Returns None if there are NO numbers
